@@ -1,0 +1,41 @@
+<div>
+  <br>
+  <button  class="btn btn-primary" (click)="voltar()">
+    <mat-icon>keyboard_backspace</mat-icon>
+  </button>
+</div>
+<br>
+<div>
+    <div class="moldura-dois">
+        <div *ngIf="item.id">
+          <h4>Dados a serem enviados</h4>
+          <div>
+            <label><strong>Descrição:</strong></label> {{ item.descricao }}
+          </div>
+          <div>
+            <label><strong>Código:</strong></label> {{ item.item }}
+          </div>
+          <div>
+            <label><strong>Preço:</strong></label> R$ {{ item.preco }}
+          </div>
+    </div>
+</div>
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <mat-form-field>
+          <input
+          matInput
+          placeholder="(xx)xxxxx-xxxx"
+            type="tel"
+            id="numero"
+            required
+            [(ngModel)]="numero"
+            name="numero"
+          />
+        </mat-form-field>    
+        <a class="btn btn-success" (click)="enviarMensagem(item,numero)">Contate-nos pelo Whatsapp</a>
+
+      </div>
+    </div>
+  </div>
+  

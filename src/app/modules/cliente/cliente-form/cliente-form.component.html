@@ -1,0 +1,31 @@
+  <div>
+    <div class="edit-form">
+      <h1><strong>{{pageTitle}}</strong></h1> 
+
+      <div>
+        <mat-form-field appearance="fill">
+        <mat-label>Nome</mat-label> 
+                  <input matInput [(ngModel)]="cliente.nome"
+          required>
+        </mat-form-field> 
+        <mat-form-field appearance="fill">
+        <mat-label>Telefone</mat-label> 
+                  <input matInput [(ngModel)]="cliente.telefone"
+          required>
+        </mat-form-field> 
+      </div>
+
+      <button class="badge badge-danger mr-2" (click)="deleteCliente()" *ngIf="currentAction == 'edit'">
+        Excluir
+      </button>
+
+      <button
+        type="submit"
+        class="badge badge-success mb-2"
+        (click)="submitForm()"
+      >
+        Gravar
+      </button>
+    </div>
+
+  </div>

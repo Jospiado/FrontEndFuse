@@ -1,0 +1,28 @@
+<div class="list row">
+    <div class="col-md-6">
+          <div class="list"> 
+        <mat-card
+            *ngFor="let cliente of ClienteCollection; let i = index"
+            (dblclick)="setActiveCliente(cliente)" 
+        >
+              <mat-card-content> 
+                <div class="float-right"> 
+                  <button mat-icon-button [matMenuTriggerFor]="menu"> 
+                    <mat-icon>more_vert</mat-icon> 
+                  </button> 
+                  <mat-menu #menu="matMenu"> 
+                    <button mat-menu-item (click)="setActiveCliente(cliente)"> 
+                      <mat-icon>edit</mat-icon> 
+                      <span>Editar</span> 
+                    </button> 
+                  </mat-menu> 
+                </div>  
+{{ cliente.nome }} {{ cliente.telefone }} 
+              </mat-card-content> 
+            </mat-card> 
+          </div>       
+</div>
+</div> 
+<button mat-fab color="primary" class="addButton" routerLink="new"> 
+  <mat-icon>add</mat-icon> 
+</button> 

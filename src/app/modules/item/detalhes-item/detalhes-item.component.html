@@ -1,0 +1,64 @@
+<div>
+  <br>
+  <button  class="btn btn-primary" routerLink="/item">
+    <mat-icon>keyboard_backspace</mat-icon>
+  </button>
+</div>
+<br>
+<div class="col-md-6">
+    <div *ngIf="item.id">
+      <h4>item</h4>
+      <div>
+        <label><strong>item:</strong></label> {{ item.item }}
+      </div>
+      <div>
+        <label><strong>Descricao:</strong></label> {{ item.descricao }}
+      </div>
+      <div>
+        <label><strong>Barras:</strong></label> {{ item.barras }}
+      </div>
+      <div>
+        <label><strong>QuantidadeEstoque:</strong></label>
+        {{ item.quantidadeEstoque }}
+      </div>
+      <div>
+        <label><strong>Preco:</strong></label> {{ item.preco }}
+      </div>
+      <div>
+        <label><strong>Precominimo:</strong></label>
+        {{ item.precominimo }}
+      </div>
+      <div>
+        <label><strong>Referencia:</strong></label> {{ item.referencia }}
+      </div>
+      <div>
+        <label><strong>Marca:</strong></label> {{ item.marca }}
+      </div>
+      <div>
+        <label><strong>Imagensdoitem:</strong></label>
+        <img src="{{ item.imagensdoitem }}" width="300" />
+      </div>
+      <div for="item.parceiro">
+        <label><strong>ParceiroDoitem:</strong></label>
+        {{ item.parceiro }}
+      </div>
+
+      <a class="btn btn-primary" routerLink="/item/detailsitem/{{ item.id }}">
+        Editar
+      </a>
+      <a class="btn btn-warning" routerLink="/item/whatsapp/{{ item.id }}">
+        Compartilhar Whatsapp
+      </a>
+      <a class="btn btn-warning" routerLink="/item/image/{{ item.id }}">
+        Visualizar Imagens
+      </a>
+      <a class="btn btn-warning" routerLink="/buscaIndividualizada/{{ item.id }}">
+        Busca Individual
+      </a>
+    </div>
+
+    <div *ngIf="!item">
+      <br />
+      <p>Por favor selecione uma linha da lista de item...</p>
+    </div>
+  </div>

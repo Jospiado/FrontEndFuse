@@ -1,0 +1,9 @@
+<h2>Selecionar campos para imprimir</h2>
+<mat-checkbox *ngFor="let campo of camposExibicao" [(ngModel)]="camposSelecionados[campo]">
+    {{ campo }}
+  </mat-checkbox>
+  
+<div class="actions">
+  <button mat-button (click)="onCancelClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="camposSelecionados" cdkFocusInitial>Imprimir</button>
+</div>

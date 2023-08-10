@@ -1,0 +1,30 @@
+<h2 mat-dialog-title style="text-align: center; font-size: 24px; margin-bottom: 16px;">
+  {{ item.descricao }}
+</h2>
+<div class="image-container">
+  <button mat-icon-button class="image-button" (click)="changeImage(-1)">
+    <mat-icon>arrow_back</mat-icon>
+  </button>
+  <img
+    src="http://localhost:8080/api/image/imagens/{{ item.id }}?index={{ currentImageIndex }}"
+    alt="Imagem"
+    class="max-h-96 w-auto"
+    (click)="closeDialog()"
+  />
+  <button mat-icon-button class="image-button" (click)="changeImage(1)">
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>
+
+<div class="dialog-buttons">
+  <button mat-icon-button (click)="navigateToDetails(item.id)">
+    <mat-icon>info</mat-icon>
+  </button>
+  <button mat-icon-button (click)="navigateToWhatsapp(item.id)">
+    <mat-icon>share</mat-icon>
+  </button>
+  <button mat-icon-button (click)="openImages()">
+    <mat-icon>photo_library</mat-icon>
+  </button>
+
+</div>

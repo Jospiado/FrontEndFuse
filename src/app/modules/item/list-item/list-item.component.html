@@ -1,0 +1,353 @@
+<!-- <div class="flex flex-col flex-auto min-w-0">
+  <br>
+  <div class="flex flex-col flex-auto min-w-0">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Procurar por Descricao"
+      [(ngModel)]="descricao"
+    />
+    <div class="flex flex-col flex-auto min-w-0">
+      <button
+        class="btn btn-outline-secondary"
+        type="button"
+        (click)="searchDescricao()"
+      >
+        Procurar
+      </button>
+    </div>
+  </div>
+
+
+
+  <div>
+    <br>
+    <button
+                      class="btn btn-success"
+                      type="button"
+                      (click)="importarDados()"
+                  >
+                      Importar do Sistema
+                  </button> 
+  </div>
+
+<div class="" infiniteScroll
+    (scrolled)="onScroll()">
+    <h4 *ngIf="!estaCarregandoSpinner">Lista de Itens</h4>
+    <mat-spinner *ngIf="estaCarregandoSpinner"></mat-spinner>
+  <div class="largura" *ngFor="let item of ItemCollection; let i = index" charset="UTF-8" >
+    <fuse-card class="h- rounded-2xl" routerLink="/detalhesitem/{{ item.id }}">
+      <mat-card-title  
+        >Nome do Produto
+        <div class="dots"> -->
+          <!-- <button
+            mat-icon-button
+            [matMenuTriggerFor]="menu"
+            aria-label="Example icon-button with a menu"
+          >
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu  #menu="matMenu">
+            <button mat-menu-item routerLink="/whatsapp/{{ item.id }}">
+              <mat-icon>share</mat-icon>
+              <span>Compartilhar</span>
+            </button>
+            <button mat-menu-item (click)="setActiveItem(item, i)">
+              <mat-icon>visibility</mat-icon>
+              <span>Detalhes</span>
+            </button>
+            <button mat-menu-item routerLink="/image/{{ item.id }}">
+              <mat-icon>image</mat-icon>
+              <span>Imagem</span>
+            </button>
+            <button mat-menu-item routerLink="/add/image/{{ item.id }}">
+              <mat-icon>image</mat-icon>
+              <span>Adicionar Imagem</span>
+            </button>
+            <button mat-menu-item (click)="deleteItem(item)">
+              <mat-icon>delete_forever</mat-icon>
+              <span>Deletar</span>
+            </button>
+          </mat-menu> -->
+        <!-- </div>
+      </mat-card-title>
+      <mat-card-subtitle><b>{{ item.descricao }}</b></mat-card-subtitle>
+      <mat-card-content>
+        R$ {{ item.preco }}
+      </mat-card-content>
+      <mat-card-actions> </mat-card-actions>
+    </fuse-card> 
+    <br/>
+  </div>
+</div>
+
+</div> -->
+<!-- <div class="list row" charset="UTF-8" >
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Procurar por Descricao"
+        [(ngModel)]="descricao"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchDescricao()"
+        >
+          Procurar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6" charset="UTF-8" >
+    <h4 *ngIf="!estaCarregandoSpinner">Lista de Itens</h4>
+    <mat-spinner *ngIf="estaCarregandoSpinner"></mat-spinner>
+    <div  *ngIf="!estaCarregandoSpinner" >
+    <div infiniteScroll
+    (scrolled)="onScroll()">
+      <div *ngFor="let item of ItemCollection; let i = index" charset="UTF-8" >
+        <p>ola</p>
+        <mat-card [class.active]="i == currentIndex" class=".is-focusable" routerLink="/detalhesitem/{{ item.id }}">
+          <mat-card-title  
+            >{{ item.descricao }}
+            <div class="dots">
+              <button
+                mat-icon-button
+                [matMenuTriggerFor]="menu"
+                aria-label="Example icon-button with a menu"
+              >
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu  #menu="matMenu">
+                <button mat-menu-item routerLink="/whatsapp/{{ item.id }}">
+                  <mat-icon>share</mat-icon>
+                  <span>Compartilhar</span>
+                </button>
+                <button mat-menu-item (click)="setActiveItem(item, i)">
+                  <mat-icon>visibility</mat-icon>
+                  <span>Detalhes</span>
+                </button>
+                <button mat-menu-item routerLink="/image/{{ item.id }}">
+                  <mat-icon>image</mat-icon>
+                  <span>Imagem</span>
+                </button>
+                <button mat-menu-item routerLink="/add/image/{{ item.id }}">
+                  <mat-icon>image</mat-icon>
+                  <span>Adicionar Imagem</span>
+                </button>
+                <button mat-menu-item (click)="deleteItem(item)">
+                  <mat-icon>delete_forever</mat-icon>
+                  <span>Deletar</span>
+                </button>
+              </mat-menu>
+            </div>
+          </mat-card-title>
+          <mat-card-subtitle>{{ item.parceiro?.nome }}</mat-card-subtitle>
+          <mat-card-content>
+            {{ item.barras }}
+          </mat-card-content>
+          <mat-card-actions> </mat-card-actions>
+        </mat-card> 
+        <br />
+      </div>
+    </div>
+    </div>
+    <mat-paginator
+      [length]="1000"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      (page)="OnPageChange($event)"
+      aria-label="Select page"
+    >
+    </mat-paginator> 
+  </div>
+</div>
+-->
+
+<div style="margin-top: 150px; margin-left: 40px;" class="absolute inset-0 flex flex-col min-w-0 overflow-hidden" >
+
+  <mat-drawer-container class="flex-auto h-full bg-card dark:bg-transparent">
+    
+      <mat-drawer-content class="flex flex-col">
+<!-- Main -->
+<div class="flex-auto p-6 sm:p-10">
+
+
+  <div class="flex-auto p-6 sm:p-10" style="position: fixed; top: 50px; left: 60%; transform: translateX(-50%); z-index: 1000; background-color: white; display: flex; flex-direction: column; width: 72%;">
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
+      <div style="flex: 1; display: flex; align-items: center;">
+        <div class="input-group" style="flex: 1;">
+          <input type="text" class="form-control" placeholder="Procurar por Descricao" [(ngModel)]="descricao" />
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" (click)="searchDescricao()">Procurar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div id="buttons" style="display: flex; align-items: center;">
+      <button mat-raised-button (click)="switchToListView()">
+        <i class="material-icons">view_list</i>
+      </button>
+      <button mat-raised-button (click)="switchToCardView()">
+        <i class="material-icons">view_module</i>
+      </button>
+      <button mat-raised-button (click)="openPrintDialog()">
+        <mat-icon>print</mat-icon>
+      </button>
+      <button mat-raised-button (click)="switchToCardView()">
+        <mat-icon>save_alt</mat-icon>
+      </button>
+
+  <style>
+    @media (min-width: 769px) {
+      #buttons {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+    }
+    </style>
+</div>
+  </div>
+  
+  <style>
+  @media (max-width: 500px) { /* Ajuste esse valor para o ponto de quebra desejado */
+    #buttons {
+      flex-direction: column;
+    }
+  }
+  </style>
+  
+  <!-- CONTENT GOES HERE -->
+  <ng-container *ngIf="isCardView; else listView">
+  <div 
+   class="h-400 min-h-400 max-h-400 rounded-2xl" >
+      <!-- Card -->
+      <fuse-card   class="max-h-71 max-w-60 inline-grid mb-2 ml-4" *ngFor="let item of ItemCollection">
+
+            <!-- Botão com três pontinhos -->
+    <button mat-icon-button [matMenuTriggerFor]="menu" class="ml-auto">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+        <!-- Menu com outras opções -->
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item  (click)="navigateToDetails(item.id)">
+            <mat-icon>info</mat-icon>
+            Detalhes
+          </button>
+
+          <button mat-menu-item routerLink="/item/whatsapp/{{ item.id }}">
+            <mat-icon>share</mat-icon>
+            Compartilhar
+          </button>
+
+          <button mat-menu-item (click)="openImageDialog(item)">
+            <mat-icon>photo_library</mat-icon>
+            Visualizar Imagens
+          </button>
+        </mat-menu>
+
+        
+          <!-- Imagem -->
+          <img src="http://localhost:8080/api/image/imagens/{{ item.id }}?index=0" alt="Imagem" max-width="300" onerror="this.style.display='none'">
+
+
+          <!-- Conteudo -->
+      <div class="flex flex-col flex-auto order-2 md:order-1 mb-2 ml-4">
+
+          <!-- Titulo -->
+          <div class="text-2xl font-semibold flex flex-wrap justify-between">{{item.descricao}}
+
+              <!-- Icone
+              <button mat-icon-button class="-mt-1 mr-2 mdc-icon-button mat-mdc-icon-button mat-unthemed mat-mdc-button-base">
+                  <mat-icon class="notranslate text-red-500 icon-size-5 mat-icon-no-color" role="img" aria-hidden="true" data-mat-icon-type="svg" data-mat-icon-name="heart" data-mat-icon-namespace="heroicons_solid"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" fit="" height="100%" width="100%" preserveAspectRatio="xMidYMid meet" focusable="false">
+                      <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z"></path>
+                  </svg></mat-icon>
+              </button> -->
+          </div>
+  
+          
+          <!-- Subtitulo -->
+          <div class="flex flex-wrap items-center text-secondary my-1">
+                  <mat-icon svgIcon="mat_solid:attach_money"></mat-icon>
+                  <div class="whitespace-nowrap">{{item.preco}}</div>
+          </div>
+  </div>
+     </fuse-card>
+  </div>
+</ng-container>
+  <mat-paginator
+  [length]="1000"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  (page)="OnPageChange($event)"
+  aria-label="Select page"
+>
+</mat-paginator> 
+
+
+</div>
+      </mat-drawer-content>
+
+  </mat-drawer-container>
+
+
+
+
+</div>
+
+
+<ng-template #listView>
+  <ul class="list-view">
+    <li *ngFor="let item of ItemCollection" class="list-item">
+      <div class="flex items-center" >
+        <!-- Fotinha (imagem) do item -->
+        <img mat-icon-button [matMenuTriggerFor]="menu" src="http://localhost:8080/api/image/imagens/{{ item.id }}?index=0" alt="Imagem" class="w-10 h-10 rounded-full mr-4">
+            
+        <div class="flex flex-col flex-grow ml-4" (click)="navigateToDetails(item.id)"> 
+          <table class="item-details-table">
+            <tr>
+              <td class="attribute">Nome</td>
+              <td class="value">{{ item.descricao }}</td>
+              <td class="attribute">R$</td>
+              <td class="value">{{ item.preco }}</td>
+            </tr>
+            <tr>
+              <td class="attribute">Código</td>
+              <td class="value">{{ item.item }}</td>
+              <td class="attribute">Barras</td>
+              <td class="value">{{ item.barras }}</td>
+            </tr>
+          </table>
+        </div>
+    
+        
+      </div>
+    
+      <!-- Menu com outras opções -->
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="navigateToDetails(item.id)">
+          <mat-icon>info</mat-icon>
+          Detalhes
+        </button>
+    
+        <button mat-menu-item (click)="navigateToWhatsapp(item.id)">
+          <mat-icon>share</mat-icon>
+          Compartilhar
+        </button>
+    
+        <button mat-menu-item (click)="openImageDialog(item)">
+          <mat-icon>photo_library</mat-icon>
+          Visualizar Imagens
+        </button>
+      </mat-menu>
+    </li>
+  </ul>
+</ng-template>
