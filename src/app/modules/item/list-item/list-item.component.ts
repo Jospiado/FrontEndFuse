@@ -18,7 +18,10 @@ import { DialogCamposComponent } from '../dialog-campos/dialog-campos.component'
   styleUrls: ['./list-item.component.css']
 })
 export class ListItemComponent implements OnInit {
-  isCardView: boolean = true;
+  isCardView: boolean = true; // Inicialmente definido para o modo de exibição de cartão
+  isListView: boolean = false; // Inicialmente definido para o modo de exibição de lista
+  isGridView: boolean = false; // Inicialmente definido como falso
+
 
 
   camposExibicao: string[]
@@ -476,16 +479,24 @@ export class ListItemComponent implements OnInit {
         });
       }
 
-    // Função para alternar para a visualização em lista
-    switchToListView(): void {
-      this.isCardView = false;
-    }
-  
-    // Função para alternar para a visualização em cards
-    switchToCardView(): void {
-      this.isCardView = true;
-    }
-  
+
+      switchToCardView() {
+        this.isCardView = true;
+        this.isListView = false;
+        this.isGridView = false;
+      }
+    
+      switchToListView() {
+        this.isCardView = false;
+        this.isListView = true;
+        this.isGridView = false;
+      }
+    
+      switchToGridView() {
+        this.isCardView = false;
+        this.isListView = false;
+        this.isGridView = true;
+      }
   
 
       

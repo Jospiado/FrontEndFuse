@@ -168,8 +168,40 @@
 </div>
 -->
 
-<div style="margin-top: 150px; margin-left: 40px;" class="absolute inset-0 flex flex-col min-w-0 overflow-hidden" >
+<div style="margin-top: 0px; margin-left: 40px;" class="absolute inset-0 flex flex-col min-w-0 overflow-hidden" >
 
+  <div class="bg-white rounded p-4 mb-4">
+    <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+      <div class="w-full md:w-auto md:flex-1 md:flex md:items-center">
+        <div class="relative">
+
+          <input type="text" class="form-input py-2 pr-10 pl-3 w-full" placeholder="Procurar por Descricao" [(ngModel)]="descricao" />
+          <div class="absolute inset-y-0 right-0 pr-3 flex items-center">
+            <button class="btn btn-outline-secondary ml-2" type="button" (click)="searchDescricao()">Procurar</button>
+          </div>
+    </div>
+</div>
+      <div class="md:mt-4">
+        <div id="buttons" class="flex flex-wrap items-center gap-2">
+          <button mat-raised-button (click)="switchToListView()">
+            <i class="material-icons">view_list</i>
+          </button>
+          <button mat-raised-button (click)="switchToCardView()">
+            <i class="material-icons">view_module</i>
+          </button>
+          <button mat-raised-button (click)="switchToGridView()">
+            <mat-icon>grid_on</mat-icon> Modo Grid
+          </button>
+          <button mat-raised-button (click)="openPrintDialog()">
+            <mat-icon>print</mat-icon>
+          </button>
+          <button mat-raised-button (click)="switchToCardView()">
+            <mat-icon>save_alt</mat-icon>
+          </button>
+        </div>
+      </div>
+  </div>
+</div>
   <mat-drawer-container class="flex-auto h-full bg-card dark:bg-transparent">
     
       <mat-drawer-content class="flex flex-col">
@@ -177,44 +209,7 @@
 <div class="flex-auto p-6 sm:p-10">
 
 
-  <div class="flex-auto p-6 sm:p-10" style="position: fixed; top: 50px; left: 60%; transform: translateX(-50%); z-index: 1000; background-color: white; display: flex; flex-direction: column; width: 72%;">
-    <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px;">
-      <div style="flex: 1; display: flex; align-items: center;">
-        <div class="input-group" style="flex: 1;">
-          <input type="text" class="form-control" placeholder="Procurar por Descricao" [(ngModel)]="descricao" />
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button" (click)="searchDescricao()">Procurar</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-    <div id="buttons" style="display: flex; align-items: center;">
-      <button mat-raised-button (click)="switchToListView()">
-        <i class="material-icons">view_list</i>
-      </button>
-      <button mat-raised-button (click)="switchToCardView()">
-        <i class="material-icons">view_module</i>
-      </button>
-      <button mat-raised-button (click)="openPrintDialog()">
-        <mat-icon>print</mat-icon>
-      </button>
-      <button mat-raised-button (click)="switchToCardView()">
-        <mat-icon>save_alt</mat-icon>
-      </button>
 
-  <style>
-    @media (min-width: 769px) {
-      #buttons {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-    }
-    </style>
-</div>
-  </div>
   
   <style>
   @media (max-width: 500px) { /* Ajuste esse valor para o ponto de quebra desejado */
@@ -223,9 +218,10 @@
     }
   }
   </style>
-  
+
+ 
   <!-- CONTENT GOES HERE -->
-  <ng-container *ngIf="isCardView; else listView">
+  <ng-container *ngIf="isCardView">
   <div 
    class="h-400 min-h-400 max-h-400 rounded-2xl" >
       <!-- Card -->
@@ -256,14 +252,14 @@
 
         
           <!-- Imagem -->
-          <img src="http://localhost:8080/api/image/imagens/{{ item.id }}?index=0" alt="Imagem" max-width="300" onerror="this.style.display='none'">
+          <img (click)="navigateToDetails(item.id)" src="http://localhost:8080/api/image/imagens/{{ item.id }}?index=0" alt="Imagem" max-width="300" onerror="this.style.display='none'">
 
 
           <!-- Conteudo -->
-      <div class="flex flex-col flex-auto order-2 md:order-1 mb-2 ml-4">
+      <div (click)="navigateToDetails(item.id)" class="flex flex-col flex-auto order-2 md:order-1 mb-2 ml-4">
 
           <!-- Titulo -->
-          <div class="text-2xl font-semibold flex flex-wrap justify-between">{{item.descricao}}
+          <div  class="text-2xl font-semibold flex flex-wrap justify-between">{{item.descricao}}
 
               <!-- Icone
               <button mat-icon-button class="-mt-1 mr-2 mdc-icon-button mat-mdc-icon-button mat-unthemed mat-mdc-button-base">
@@ -283,28 +279,9 @@
      </fuse-card>
   </div>
 </ng-container>
-  <mat-paginator
-  [length]="1000"
-  [pageSize]="10"
-  [pageSizeOptions]="[5, 10, 25, 100]"
-  (page)="OnPageChange($event)"
-  aria-label="Select page"
->
-</mat-paginator> 
 
 
-</div>
-      </mat-drawer-content>
-
-  </mat-drawer-container>
-
-
-
-
-</div>
-
-
-<ng-template #listView>
+<ng-container *ngIf="isListView">
   <ul class="list-view">
     <li *ngFor="let item of ItemCollection" class="list-item">
       <div class="flex items-center" >
@@ -312,18 +289,14 @@
         <img mat-icon-button [matMenuTriggerFor]="menu" src="http://localhost:8080/api/image/imagens/{{ item.id }}?index=0" alt="Imagem" class="w-10 h-10 rounded-full mr-4">
             
         <div class="flex flex-col flex-grow ml-4" (click)="navigateToDetails(item.id)"> 
-          <table class="item-details-table">
+          <table class="item-details-table border">
             <tr>
-              <td class="attribute">Nome</td>
-              <td class="value">{{ item.descricao }}</td>
-              <td class="attribute">R$</td>
-              <td class="value">{{ item.preco }}</td>
+              <td class="value border border-transparent"><strong>Nome</strong> {{ item.descricao }}</td>
+              <td class="value border border-transparent"><strong>R$</strong> {{ item.preco }}</td>
             </tr>
             <tr>
-              <td class="attribute">Código</td>
-              <td class="value">{{ item.item }}</td>
-              <td class="attribute">Barras</td>
-              <td class="value">{{ item.barras }}</td>
+              <td class="value border border-transparent"><strong>Código</strong> {{ item.item }}</td>
+              <td class="value border border-transparent"><strong>Barras</strong> {{ item.barras }}</td>
             </tr>
           </table>
         </div>
@@ -350,4 +323,60 @@
       </mat-menu>
     </li>
   </ul>
-</ng-template>
+</ng-container>
+
+
+<ng-container *ngIf="isGridView">
+  <div class="table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Descrição</th>
+          <th>Preço</th>
+          <th>Código de Barras</th>
+          <th>Código</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of ItemCollection">
+          <td>{{ item.descricao }}</td>
+          <td>{{ item.preco }}</td>
+          <td>{{ item.barras }}</td>
+          <td>{{ item.item }}</td>
+          <td>
+            <div class="dropdown">
+              <button class="dropbtn">Opções</button>
+              <div class="dropdown-content">
+                <a  (click)="navigateToDetails(item.id)">Detalhes</a>
+                <a (click)="navigateToWhatsapp(item.id)">Compartilhar</a>
+                <a (click)="openImageDialog(item)">Visualizar Imagem</a>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-container>
+
+
+
+  <mat-paginator
+  [length]="1000"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, 100]"
+  (page)="OnPageChange($event)"
+  aria-label="Select page"
+>
+</mat-paginator> 
+
+
+</div>
+      </mat-drawer-content>
+
+  </mat-drawer-container>
+
+
+
+
+</div>
